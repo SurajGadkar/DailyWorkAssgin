@@ -39,7 +39,6 @@ function Register() {
   };
   return (
     <div className="main">
-      <Header />
       <div className="container ">
         <h1 className="register"> Register </h1>
         <div className="inputs">
