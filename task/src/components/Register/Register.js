@@ -2,12 +2,36 @@ import React, { useState } from "react";
 import "./Register.css";
 import Header from "../Header/Header";
 
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../actions/userAction";
+
+import { useNavigate } from "react-router-dom";
+
 function Register() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleChange = (event) => {
     const { id, value } = event.target;
 
     if (id === "username") {
+      setUsername(value);
     }
+    if (id === "password") {
+      setPassword(value);
+    }
+    if (id === "email") {
+      setEmail(value);
+    }
+  };
+
+  const handleRegister = () => {
+    dispatch(registerUser(email, username, password));
+    navigate("/login");
   };
   return (
     <div className="main">
@@ -22,6 +46,7 @@ function Register() {
               type="text"
               placeholder="Enter your username"
               id="username"
+              onChange={handleChange}
             />
           </div>
           <div className="p1">
@@ -31,6 +56,7 @@ function Register() {
               type="email"
               placeholder="Enter your email"
               id="email"
+              onChange={handleChange}
             />
           </div>
           <div className="p1">
@@ -40,14 +66,18 @@ function Register() {
               type="password"
               placeholder="Enter your password"
               id="password"
+              onChange={handleChange}
             />
           </div>
         </div>
-        <div className="btn ">
-          <button className="fw p1" onClick={handleChange}>
+        <div className="btnn  ">
+          <button className="fw p1 " onClick={handleRegister}>
             {" "}
             <h5>Register </h5>
           </button>
+          <div>
+            Already an user? <a href="/login"> login here</a>
+          </div>
         </div>
       </div>
     </div>
