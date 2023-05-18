@@ -34,7 +34,9 @@ function Login() {
         dispatch(loginUser(username, password));
         navigate("/");
       } else {
-        window.alert("Username and password does not match");
+        window.alert(
+          "Username and password does not match or not registered yet."
+        );
       }
     }
   };
