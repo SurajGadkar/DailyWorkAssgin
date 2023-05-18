@@ -27,9 +27,15 @@ function Login() {
   };
 
   const handleLogin = (event) => {
-    navigate("/");
-    if (username === userData.username && password === userData.password) {
-      dispatch(loginUser(username, password));
+    if (!username || !password) {
+      window.alert("Both username and password is required.");
+    } else {
+      if (username === userData.username && password === userData.password) {
+        dispatch(loginUser(username, password));
+        navigate("/");
+      } else {
+        window.alert("Username and password does not match");
+      }
     }
   };
 

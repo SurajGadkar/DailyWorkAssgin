@@ -30,8 +30,12 @@ function Register() {
   };
 
   const handleRegister = () => {
-    dispatch(registerUser(email, username, password));
-    navigate("/login");
+    if (username && email && password) {
+      dispatch(registerUser(email, username, password));
+      navigate("/login");
+    } else {
+      window.alert("All fields are required.");
+    }
   };
   return (
     <div className="main">
@@ -76,7 +80,7 @@ function Register() {
             <h5>Register </h5>
           </button>
           <div>
-            Already an user? <a href="/login"> login here</a>
+            Already an user? login<a href="/login"> here</a>
           </div>
         </div>
       </div>
