@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ function Home() {
     if (!userData.isLoggedIn) {
       navigate("/login");
     }
-  }, []);
+  }, [navigate, userData.isLoggedIn]);
 
   const logout = () => {
     dispatch(logoutUser());
